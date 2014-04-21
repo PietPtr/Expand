@@ -84,10 +84,10 @@ while True:
         if event.type == KEYUP:
             if event.key == 293:
                 for x in range(0, 4294967):
-                    if os.path.exists("screenshot" + str(x) + ".jpeg") == True:
+                    if os.path.exists("screenshot" + str(x) + ".png") == True:
                         next
-                    elif os.path.exists("screenshot" + str(x) + ".jpeg") == False:
-                        pygame.image.save(windowSurface, "screenshot" + str(x) + ".jpeg")
+                    elif os.path.exists("screenshot" + str(x) + ".png") == False:
+                        pygame.image.save(windowSurface, "screenshot" + str(x) + ".png")
                         break           
         if event.type == QUIT:
             pygame.quit()
