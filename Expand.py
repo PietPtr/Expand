@@ -71,6 +71,10 @@ while True:
 
     for transmitter in transmitterList:
         transmitter.spawn()
+
+    if pygame.key.get_pressed()[8] == True:
+        ringList = []
+        transmitterList = []
     
     pygame.display.update()
     for event in pygame.event.get():
