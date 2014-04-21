@@ -66,7 +66,7 @@ while True:
 
     for ring in ringList:
         ring.render()
-        if ring.size > 2000:
+        if ring.size > 2200:
             ringList.remove(ring)
 
     for transmitter in transmitterList:
