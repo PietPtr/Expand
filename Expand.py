@@ -1,4 +1,4 @@
-import pygame, sys, os
+import pygame, sys, os, random
 from pygame.locals import *
 
 pygame.init()
@@ -15,6 +15,9 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+
+colorList = [(255, 255, 0), RED, GREEN, BLUE]
 
 TIMEDIFFERENCE = 100
 SPEED = 0.4
@@ -31,9 +34,11 @@ class Ring(object):
     def __init__(self, position):
         self.position = position
         self.size = 1
+        self.color = YELLOW#random.choice(colorList)
     def render(self):
-        pygame.draw.circle(windowSurface, BLUE, (self.position[0], self.position[1]), int(self.size), 1)
-        #pygame.draw.rect(windowSurface, RED, (self.position[0], self.position[1], int(self.size), int(self.size)), 1)
+        if self.size <= 1:
+            self.size = 2
+        pygame.draw.circle(windowSurface, self.color, (self.position[0], self.position[1]), int(self.size), 1)
         self.size = self.size + distance(SPEED, frameTime)
 
 class Transmitter(object):
@@ -72,6 +77,10 @@ while True:
         if event.type == MOUSEBUTTONUP:
             if event.button == 3:
                 transmitterList.append(Transmitter([mousePosition[0], mousePosition[1]]))
+            elif event.button == 4:
+                SPEED = SPEED - 0.1
+            elif event.button == 5:
+                SPEED = SPEED + 0.1
         if event.type == KEYUP:
             if event.key == 293:
                 for x in range(0, 4294967):
